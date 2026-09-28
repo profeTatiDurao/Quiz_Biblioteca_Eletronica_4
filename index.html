@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Estrutura e Componentes React Native</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2f;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #2b2b3d;
+            padding: 30px;
+            width: 680px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #a5b4fc;
+        }
+
+        .subtitulo {
+            font-size: 0.95rem;
+            color: #cccccc;
+            margin-bottom: 25px;
+        }
+
+        .pergunta {
+            text-align: left;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-left: 3px solid #a5b4fc;
+            background-color: #242436;
+            border-radius: 6px;
+        }
+
+        .pergunta p {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        code {
+            color: #a5b4fc;
+            background-color: #1e1e2f;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #a5b4fc;
+            color: #1e1e2f;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #818cf8;
+            transform: translateY(-2px);
+        }
+
+        #resultado {
+            font-weight: bold;
+            margin-top: 20px;
+            color: #a5b4fc;
+        }
+
+        #linkRespostas {
+            margin-top: 15px;
+            word-break: break-all;
+        }
+
+        #linkRespostas a {
+            color: #a5b4fc;
+            font-weight: bold;
+        }
+
+        .correto {
+            color: #00ff7f;
+            font-weight: bold;
+        }
+
+        .errado {
+            color: #ff4040;
+            font-weight: bold;
+        }
+
+        .neutro {
+            color: #ffd166;
+            font-weight: bold;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Quiz - React Native: State e Componentes</h1>
+
+        <p class="subtitulo">
+            Teste seus conhecimentos sobre o código analisado: desestruturação de estado, TextInput controlado, ImageBackground, arrays de estilo e eventos no Pressable.
+        </p>
+
+        <form id="quizForm">
+
+            <div class="pergunta" id="q1box">
+                <p>1) No início do método render, temos <code>const { bookId, studentId } = this.state</code>. Qual é o papel de vincular essas variáveis à propriedade <code>value</code> dos componentes <code>TextInput</code>?</p>
+
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    Tornar o componente não-controlado para que o React ignore qualquer alteração no texto
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    Criar um componente controlado (Controlled Component), garantindo que o texto visível no input seja sempre sincronizado com o estado
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    Converter automaticamente os caracteres digitados em valores numéricos inteiros
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q1" value="d">
+                    Desabilitar a digitação do usuário caso o banco de dados esteja offline
+                </label>
+            </div>
+
+            <div class="pergunta" id="q2box">
+                <p>2) No layout, qual é a principal finalidade do componente <code>&lt;ImageBackground&gt;</code> envolvendo os outros blocos da tela?</p>
+
+                <label>
+                    <input type="radio" name="q2" value="a">
+                    Servir como um container que renderiza uma imagem de fundo, permitindo que outros componentes filhos fiquem posicionados sobre ela
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q2" value="b">
+                    Criar uma camada vetorial que impede que botões recebam toques acidentais
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q2" value="c">
+                    Substituir o uso de CSS externo no React Native sem precisar do StyleSheet
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q2" value="d">
+                    Apenas comprimir as imagens <code>appIcon</code> e <code>appName</code> para economizar memória
+                </label>
+            </div>
+
+            <div class="pergunta" id="q3box">
+                <p>3) No segundo container de campo de texto, o estilo foi aplicado como <code>style={[styles.textinputContainer, { marginTop: 25 }]}</code>. Como o React Native interpreta essa sintaxe em array?</p>
+
+                <label>
+                    <input type="radio" name="q3" value="a">
+                    Ele ignora o primeiro estilo e aplica unicamente a margem do objeto inline
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q3" value="b">
+                    Ele gera um erro de compilação, pois atributos <code>style</code> aceitam apenas um único objeto por vez
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q3" value="c">
+                    Ele alterna os dois estilos em intervalos de 25 milissegundos
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q3" value="d">
+                    Ele mescla os estilos, permitindo reaproveitar a classe <code>styles.textinputContainer</code> e acrescentar ou sobrescrever regras com o objeto <code>{ marginTop: 25 }</code>
+                </label>
+            </div>
+
+            <div class="pergunta" id="q4box">
+                <p>4) Para o botão "Enviar", foi utilizado o componente <code>&lt;Pressable&gt;</code> com a propriedade <code>onPress={this.handleTransaction}</code>. O que acontece quando essa propriedade é acionada?</p>
+
+                <label>
+                    <input type="radio" name="q4" value="a">
+                    O aplicativo limpa imediatamente o valor de <code>studentId</code> e <code>bookId</code> sem executar funções
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q4" value="b">
+                    O teclado virtual é bloqueado para novas inserções de texto
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q4" value="c">
+                    O método <code>this.handleTransaction</code> da classe é executado em resposta ao toque ou clique do usuário no botão
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q4" value="d">
+                    O botão é convertido automaticamente em um link de navegação web externa
+                </label>
+            </div>
+
+            <div class="pergunta" id="q5box">
+                <p>5) Observe o manipulador de texto: <code>onChangeText={(text) => { this.setState({ studentId: text }) }}</code>. Qual é o exato momento em que essa função é executada?</p>
+
+                <label>
+                    <input type="radio" name="q5" value="a">
+                    Apenas quando o usuário clica no botão "Enviar"
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q5" value="b">
+                    Somente quando a tela termina de carregar a imagem de fundo <code>bgImage</code>
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q5" value="c">
+                    Quando o usuário aperta no texto "Pesquisar" da view <code>scanbutton</code>
+                </label><br>
+
+                <label>
+                    <input type="radio" name="q5" value="d">
+                    Em tempo real a cada caractere digitado, alterado ou deletado dentro do <code>TextInput</code> do aluno, atualizando o estado correspondente
+                </label>
+            </div>
+
+            <button type="button" onclick="corrigir()">Enviar Respostas</button>
+
+        </form>
+
+        <p id="resultado"></p>
+
+        <p id="linkRespostas"></p>
+
+    </div>
+
+    <script>
+        function corrigir() {
+            const respostasCorretas = {
+                q1: "b",
+                q2: "a",
+                q3: "d",
+                q4: "c",
+                q5: "d"
+            };
+
+            let pontos = 0;
+            const total = Object.keys(respostasCorretas).length;
+            const form = document.getElementById("quizForm");
+
+            let params = [];
+
+            for (const q in respostasCorretas) {
+                const box = document.getElementById(q + "box");
+
+                const antigo = box.querySelector(".feedback");
+                if (antigo) antigo.remove();
+
+                const marcado = form.querySelector(`input[name="${q}"]:checked`);
+
+                const respostaAluno = marcado ? marcado.value : "nao_respondeu";
+
+                const acertou = respostaAluno === respostasCorretas[q];
+
+                if (acertou) {
+                    pontos++;
+                }
+
+                params.push(`${q}=${respostaAluno}`);
+                params.push(`${q}_status=${acertou ? "correto" : "errado"}`);
+
+                const feedback = document.createElement("p");
+                feedback.classList.add("feedback");
+
+                if (respostaAluno === "nao_respondeu") {
+                    feedback.textContent = "⚠️ Você não marcou nenhuma alternativa.";
+                    feedback.classList.add("neutro");
+                } else if (acertou) {
+                    feedback.textContent = "✅ Correto!";
+                    feedback.classList.add("correto");
+                } else {
+                    let respostaCorretaTexto = "";
+
+                    const inputs = box.querySelectorAll("label input");
+
+                    inputs.forEach(input => {
+                        if (input.value === respostasCorretas[q]) {
+                            respostaCorretaTexto = input.parentNode.textContent.trim();
+                        }
+                    });
+
+                    feedback.textContent = `❌ Errado. A resposta correta é: ${respostaCorretaTexto}`;
+                    feedback.classList.add("errado");
+                }
+
+                box.appendChild(feedback);
+            }
+
+            document.getElementById("resultado").textContent =
+                `Você acertou ${pontos} de ${total} questões.`;
+
+            params.push(`pontos=${pontos}`);
+            params.push(`total=${total}`);
+
+            const urlBase = window.location.origin + window.location.pathname;
+            const link = urlBase + "?" + params.join("&");
+
+            document.getElementById("linkRespostas").innerHTML =
+                `🔗 Link com respostas e status:<br><a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+
+</body>
+
+</html>
